@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Our Memories 📸</title>
+  <link rel="stylesheet" href="gallery.css">
+</head>
+<body>
+
+  <!-- Modal for full image preview -->
+<div id="imageModal" class="modal">
+  <span class="close" onclick="closeModal()">&times;</span>
+  <img class="modal-content" id="modalImg">
+  <div id="caption">You & Me — forever captured in this moment 💖</div>
+</div>
+
+  <div class="container">
+    <h1>Our Sweetest Memories ❤️</h1>
+    <div class="gallery">
+      <img src="images/Gallerys/yuno-dee1.png" alt="Cute moment">
+      <img src="images/Gallerys/yuno-dee2.png" alt="Smiling together">
+      <img src="images/Gallerys/yuno-dee3.png" alt="Laughing time">
+    </div>
+
+    <div class="nav-links">
+      <a href="videos.html" class="back-btn">🎥 Watch Videos</a>
+      <a href="love-letter.html" class="back-btn">💌 Love Letter</a>
+      <a href="timeline.html" class="back-btn">⏳ Our Timeline</a>
+    </div>
+  </div>
+
+  <script>
+  const modal = document.getElementById("imageModal");
+  const modalImg = document.getElementById("modalImg");
+  const captionText = document.getElementById("caption");
+
+  document.querySelectorAll(".gallery img").forEach(img => {
+    img.addEventListener("click", () => {
+      modal.style.display = "block";
+      modalImg.src = img.src;
+      captionText.innerText = img.alt + " 💖";
+    });
+  });
+
+  function closeModal() {
+    modal.style.display = "none";
+  }
+
+  window.onclick = function(event) {
+  if (event.target == modal) {
+    closeModal();
+  }
+}
+
+</script>
+
+
+</body>
+</html>

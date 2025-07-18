@@ -1,0 +1,198 @@
+/* === RESET === */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(to top left, #fbd3e9, #bb377d);
+  color: white;
+  overflow: hidden;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+/* === BACKGROUND SLIDER === */
+.bg-slider {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  z-index: 1;
+  border-radius: 30px;
+}
+
+.slide-track {
+  display: flex;
+  height: 100%;
+  width: calc(200%);
+  animation: scrollLeft 50s linear infinite;
+}
+
+.slide-track img {
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  flex-shrink: 0;
+  opacity: 0.6;
+  filter: brightness(0.5) blur(2px);
+}
+
+/* === SCROLLING ANIMATION === */
+@keyframes scrollLeft {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-700%);
+  }
+}
+
+/* === WELCOME BOX === */
+.welcome-container {
+  position: relative;
+  z-index: 2;
+  height: inherit;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  border-radius: 30px;
+  overflow: hidden;
+  box-shadow: 0 0 35px rgba(255, 255, 255, 0.25);
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+  border: 2px solid #ffffff;
+  border-radius: 30px;
+  box-shadow: 0 0 35px rgba(255, 255, 255, 0.25);
+  padding: 50px 30px;
+  max-width: 700px;
+  width: 90%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: fadeInUp 1.5s ease forwards;
+}
+
+/* === TEXT STYLES === */
+.welcome-container h1 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+  color: #fff;
+  text-shadow: 0 0 15px #fff, 0 0 25px #ff90b3;
+  animation: glowText 2s ease-in-out infinite alternate;
+}
+
+.welcome-container p {
+  font-size: 1.3rem;
+  margin-bottom: 30px;
+  color: #fff;
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+/* === BUTTON === */
+.welcome-container button {
+  background: linear-gradient(135deg, #ffdde1, #ee9ca7);
+  color: #fff;
+  border: none;
+  padding: 16px 40px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 25px rgba(255, 105, 135, 0.3);
+  position: relative;
+  z-index: 10;
+  animation: fadeInUp 1s ease forwards 1.5s;
+  opacity: 0;
+}
+
+.welcome-container button:hover {
+  background: linear-gradient(135deg, #ffb3c6, #ff99ac);
+  transform: scale(1.07);
+  box-shadow: 0 12px 28px rgba(255, 105, 135, 0.4);
+}
+
+
+/* === HEART FLOAT EFFECT === */
+.heart {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: url('heart.png') no-repeat center/contain;
+  animation: floatHearts 8s linear infinite;
+  opacity: 0.7;
+  z-index: 3;
+}
+
+@keyframes floatHearts {
+  0% {
+    transform: translateY(100vh) scale(0.5);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-10vh) scale(1.2);
+    opacity: 0;
+  }
+}
+
+/* === ANIMATIONS === */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes glowText {
+  0% {
+    text-shadow: 0 0 10px #fff, 0 0 15px #ff90b3;
+  }
+  100% {
+    text-shadow: 0 0 20px #fff, 0 0 35px #ff90b3;
+  }
+}
+
+/* === MOBILE FRIENDLY === */
+@media screen and (max-width: 600px) {
+  .welcome-container {
+    padding: 30px 20px;
+    border-radius: 20px;
+  }
+
+  .welcome-container h1 {
+    font-size: 2rem;
+  }
+
+  .welcome-container p {
+    font-size: 1rem;
+  }
+
+  .welcome-container button {
+    padding: 12px 25px;
+    font-size: 0.95rem;
+  }
+
+  .slide-track img {
+    width: 100vw;
+    height: 100vh;
+    border-radius: 0;
+  }
+}

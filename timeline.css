@@ -1,0 +1,186 @@
+/* ==== Base Reset ==== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: linear-gradient(135deg, #fbd3e9, #bb377d);
+  font-family: 'Segoe UI', sans-serif;
+  color: white;
+  min-height: 100vh;
+  padding: 40px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+}
+
+/* ==== Floating Heart Animation ==== */
+body::before {
+  content: "💗 💞 💖 💘 💝 💓";
+  position: absolute;
+  top: -10%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 2rem;
+  opacity: 0.4;
+  animation: floatHearts 20s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes floatHearts {
+  0% { transform: translateX(-50%) translateY(0); }
+  100% { transform: translateX(-50%) translateY(120vh); }
+}
+
+/* ==== Container ==== */
+.container {
+  max-width: 800px;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(12px);
+  padding: 60px 30px;
+  border-radius: 25px;
+  box-shadow: 0 10px 30px rgba(255, 105, 180, 0.25);
+  animation: fadeIn 1.5s ease-out;
+}
+
+/* ==== Heading ==== */
+.container h1 {
+  font-size: 2.5rem;
+  margin-bottom: 30px;
+  color: #fff;
+  text-shadow: 0 0 20px rgba(255, 182, 193, 0.7);
+  animation: glow 2s infinite alternate;
+}
+
+/* ==== Timeline List ==== */
+.timeline {
+  text-align: left;
+  list-style: none;
+  padding: 0;
+  font-size: 1.2rem;
+  position: relative;
+  margin: 30px 0;
+}
+
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 10px;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: linear-gradient(to bottom, #ff9a9e, #fad0c4);
+  border-radius: 2px;
+}
+
+.timeline li {
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 25px;
+  background: rgba(255, 255, 255, 0.08);
+  border-left: 5px solid #ff9a9e;
+  border-radius: 10px;
+  padding: 15px 20px;
+  animation: slideIn 0.6s ease forwards;
+  transition: all 0.3s ease;
+}
+
+.timeline li::before {
+  content: "🌸";
+  position: absolute;
+  left: -2px;
+  top: 10px;
+  font-size: 1.1rem;
+  animation: bounce 1s infinite alternate;
+}
+
+/* ==== Nav Buttons ==== */
+.nav-links {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-top: 30px;
+}
+
+.back-btn {
+  background-color: white;
+  color: #bb377d;
+  padding: 12px 28px;
+  border-radius: 30px;
+  font-weight: bold;
+  font-size: 1rem;
+  text-decoration: none;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.back-btn::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0; left: -100%;
+  background: #ffd6eb;
+  z-index: 0;
+  transition: all 0.4s ease;
+}
+
+.back-btn:hover::after {
+  left: 0;
+}
+
+.back-btn:hover {
+  transform: translateY(-3px);
+  color: #a6007e;
+}
+
+/* ==== Animations ==== */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes glow {
+  0% { text-shadow: 0 0 10px #ffb6c1, 0 0 20px #ff69b4; }
+  100% { text-shadow: 0 0 20px #ffcce6, 0 0 30px #ff8ccf; }
+}
+
+@keyframes slideIn {
+  0% { opacity: 0; transform: translateX(-50px); }
+  100% { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes bounce {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.2); }
+}
+
+/* ==== Responsive ==== */
+@media (max-width: 600px) {
+  .container {
+    padding: 40px 20px;
+  }
+
+  .container h1 {
+    font-size: 2rem;
+  }
+
+  .timeline li {
+    font-size: 1rem;
+    padding-left: 30px;
+  }
+
+  .back-btn {
+    font-size: 0.9rem;
+    padding: 10px 20px;
+  }
+}
